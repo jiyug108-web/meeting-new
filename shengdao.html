@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>访客预约提交 - 金圣道</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            margin: 24px;
+            color: #222;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .page-links {
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .page-links a {
+            color: #1677ff;
+            text-decoration: none;
+            margin-right: 12px;
+        }
+
+        .page-links a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            margin-bottom: 16px;
+        }
+
+        form {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            background: #fafafa;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 12px;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        input[readonly] {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #fff;
+            background: #1677ff;
+            font-size: 14px;
+        }
+
+        button:disabled {
+            background: #90bfff;
+            cursor: not-allowed;
+        }
+
+        .hint {
+            margin-top: 8px;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .status {
+            margin-top: 14px;
+            font-size: 14px;
+        }
+
+        .status.success {
+            color: #198754;
+        }
+
+        .status.error {
+            color: #d93025;
+        }
+
+        .logs {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .logs h2 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+
+        #logList {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        #logList li {
+            margin-bottom: 8px;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>提交预约请求（金圣道）</h1>
+    <form id="appointmentForm">
+        <div class="field">
+            <label for="v_name">姓名（v_name）</label>
+            <input id="v_name" name="v_name" type="text" readonly>
+        </div>
+
+        <div class="field">
+            <label for="v_plateNumber">车牌（v_plateNumber）</label>
+            <input id="v_plateNumber" name="v_plateNumber" type="text" readonly>
+        </div>
+
+        <div class="field">
+            <label for="v_timeStr">起始时间（v_timeStr）</label>
+            <input id="v_timeStr" name="v_timeStr" type="text" required>
+        </div>
+
+        <div class="field">
+            <label for="v_lvTimeStr">结束时间（v_lvTimeStr）</label>
+            <input id="v_lvTimeStr" name="v_lvTimeStr" type="text" required>
+        </div>
+
+        <button id="submitBtn" type="submit">提交</button>
+        <div class="hint">时间格式：YYYY-MM-DD HH:mm:ss（默认当天 08:00:00 / 23:56:00）</div>
+        <div id="statusLog" class="status">尚未提交</div>
+    </form>
+
+    <section class="logs">
+        <h2>请求日志</h2>
+        <ul id="logList"></ul>
+    </section>
+</div>
+
+<script src="./shengdao.js"></script>
+<script src="./index.js"></script>
+
+</body>
+</html>
+

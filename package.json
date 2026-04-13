@@ -1,0 +1,11 @@
+{
+  "name": "yueyue2",
+  "version": "1.0.0",
+  "description": "visitor appointment submit page",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "start": "python3 -m http.server 8080"
+  },
+  "private": true
+}
